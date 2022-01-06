@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AuthMiddleware;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+
+use App\Http\Controllers\SurveyorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +27,15 @@ Route::middleware([AuthMiddleware::class])->group(function () {
         return view("dashboard");
     });
 
-    Route::get("/surveyor", function(){
-        return view("Surveyor.surveyor");
+    Route::prefix('surveyor')->group(function () {
+        Route::get("/",[SurveyorController::class,'show']);
+        Route::get("/create",[SurveyorController::class,'create']);
+        Route::get("/update/{id}",[SurveyorController::class,'update']);
+        Route::get("/delete/{id}",[SurveyorController::class,'delete']);
+
+        Route::post("/create",[SurveyorController::class,'create_data']);
     });
+
+   
 });
 

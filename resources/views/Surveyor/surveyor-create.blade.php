@@ -275,13 +275,13 @@
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-              <h6 class="h2 text-white d-inline-block mb-0">Surveyor</h6>
+              <h6 class="h2 text-white d-inline-block mb-0">Tambah Surveyor</h6>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                  <li class="breadcrumb-item"><a href="dashboard"><i class="fas fa-home"></i></a></li>
-                  <li class="breadcrumb-item"><a href="dashboard">Dashboard</a></li>
-                  <li class="breadcrumb-item"><a href="surveyor">Surveyor</a></li>
-                  
+                  <li class="breadcrumb-item"><a href="{{url('/dashboard')}}"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">Dashboard</a></li>
+                  <li class="breadcrumb-item"><a href="{{url('/surveyor')}}">Surveyor</a></li>
+                  <li class="breadcrumb-item active"><a href="{{url('/surveyor/create')}}">Update Surveyor</a></li>
                 </ol>
               </nav>
             </div>
@@ -291,76 +291,47 @@
             </div> -->
           </div>
           <!-- Card stats -->
-          <div class="row mb-4" style="padding-left:15px;padding-right:15px">
-             <a href="{{url('/surveyor/create')}}"> <button class="btn btn-secondary">Tambah Surveyor</button></a>
-          </div>
+        
           <div class="row">
-          <div class="flash-message" style="padding-left:15px;padding-right:15px">
-            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-              @if(Session::has('alert-' . $msg))
-              <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}</p>
-              @endif
-            @endforeach
-          </div>
             <div class="col-xl-12 col-md-12">
               <div class="card card-stats">
                 <!-- Card body -->
-                <div class="card-body">
-                <div class="table-responsive">
-              <table class="table align-items-center table-flush">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col" class="sort" data-sort="id">ID Surveyor</th>
-                    <th scope="col" class="sort" data-sort="nama">Nama Surveyor</th>
-                    <th scope="col" class="sort" data-sort="notelepon">No Telepon</th>
-                    <th scope="col">Email</th>
-                    <th scope="col" class="sort" data-sort="password">Password</th>
-                    <th scope="col">Foto</th>
-                    <th scope="col">Aksi</th>
-                  </tr>
-                </thead>
-                <tbody class="list">
-                  @foreach($surveyor as $item)
-                  <tr>
-                    <td>
-                      {{$item->id_surveyor}}
-                    </td>
-                    <td>
-                      {{$item->nama}}
-                    </td>
-                    <td>
-                      {{$item->notelepon}}
-                    </td>
-                    <td>
-                      {{$item->email}}
-                    </td>
-                    <td>
-                      {{$item->password}}
-                    </td>
-                    <td>
-                       <div>
-                          <img style="width:100px;height:100px" src="/assets/surveyor/{{$item->foto}}">
-                      </div>
-                    </td>
-                    <td>
-                      <a href="/surveyor/update/{{$item->id_surveyor}}">
-                        <div class="btn btn-primary"> 
-                          <i style="font-size:14px" class="bi bi-pencil"></i>
+                    <div class="card-body">
+
+                      <form action="" method="POST" enctype="multipart/form-data">
+                      <input type="hidden" name="_method" value="POST">
+                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                      <div class="form-group">
+                          <label for="exampleInputEmail1">Nama Surveyor</label>
+                          <input required type="text" name="nama" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nama surveyor">
                         </div>
-                      </a>
-                      <a href="/surveyor/delete/{{$item->id_surveyor}}" title="delete" class="delete" onclick="return confirm('Are you sure you want to delete this item')">
-                          <div class="btn btn-danger"> 
-                            <i style="font-size:14px" class="bi bi-trash"></i>
-                          </div>
-                      </a>
-                    </td>
-                  </tr>
-                  @endforeach
-            
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">No. Telepon</label>
+                          <input required type="text" name="notelepon" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan no.telepon surveyor">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Email</label>
+                          <input required type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan email surveyor">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Password</label>
+                          <input required type="password" name="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan password surveyor">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Foto</label>
+                          <input type="file" name="foto" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan password surveyor">
+                        </div>
+
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-secondary">Tambah</button>
+                        </div>
+                      </form>
+
+                    </div>
                 </div>
               </div>
             </div>

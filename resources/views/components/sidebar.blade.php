@@ -12,7 +12,7 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link {{($selected==='dashboard') ? 'active':''}}" href="dashboard">
+              <a class="nav-link {{($selected==='dashboard') ? 'active':''}}" href="{{url('/dashboard')}}">
                 <i class="ni ni-tv-2"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
@@ -72,11 +72,68 @@
           <!-- Navigation -->
           <ul class="navbar-nav mb-md-3">
             <li class="nav-item">
-                <a class="nav-link {{($selected==='surveyor') ? 'active':''}}" href="surveyor">
+                <a class="nav-link {{($selected==='surveyor') ? 'active':''}}" href="{{url('/surveyor')}}">
                     <i class="ni ni-badge"></i>
                     <span class="nav-link-text">Surveyor</span>
                 </a>
                 </li>
+          </ul>
+
+
+          <h6 class="navbar-heading p-0 text-muted">
+            <span class="docs-normal">ALUR SURVEY</span>
+          </h6>
+          <!-- Navigation -->
+          <ul class="navbar-nav mb-md-3">
+            <li class="nav-item">
+                <a class="nav-link {{($selected==='coldfile') ? 'active':''}}" href="{{url('/coldfile')}}">
+                    <i class="ni ni-single-copy-04"></i>
+                    <span class="nav-link-text">Cold File</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{($selected==='coldfile') ? 'active':''}}" href="{{url('/surveyawal')}}">
+                    <i class="ni ni-single-copy-04"></i>
+                    <span class="nav-link-text">Survey Awal</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{($selected==='coldfile') ? 'active':''}}" href="{{url('/surveyor')}}">
+                    <i class="ni ni-single-copy-04"></i>
+                    <span class="nav-link-text">Survey Lanjutan</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{($selected==='coldfile') ? 'active':''}}" href="coldfile">
+                    <i class="ni ni-single-copy-04"></i>
+                    <span class="nav-link-text">Hitung Bisnis</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{($selected==='coldfile') ? 'active':''}}" href="coldfile">
+                    <i class="ni ni-single-copy-04"></i>
+                    <span class="nav-link-text">Uji Tuntas Status Tanah</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{($selected==='coldfile') ? 'active':''}}" href="coldfile">
+                    <i class="ni ni-satisfied"></i>
+                    <span class="nav-link-text">Buat Janji Untuk Penawaran</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{($selected==='coldfile') ? 'active':''}}" href="coldfile">
+                    <i class="ni ni-paper-diploma"></i>
+                    <span class="nav-link-text">Transaksi Selesai</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{($selected==='coldfile') ? 'active':''}}" href="coldfile">
+                    <i class="ni ni-money-coins"></i>
+                    <span class="nav-link-text">Ready For Sale</span>
+                </a>
+              </li>
+              
           </ul>
 
           <hr class="my-3">
