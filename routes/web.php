@@ -34,6 +34,7 @@ Route::middleware([AuthMiddleware::class])->group(function () {
         Route::get("/delete/{id}",[SurveyorController::class,'delete']);
 
         Route::post("/create",[SurveyorController::class,'create_data']);
+        Route::post("/update/{id}",[SurveyorController::class,'update_data']);
     });
 
    

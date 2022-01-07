@@ -298,35 +298,38 @@
                 <!-- Card body -->
                     <div class="card-body">
 
+                    <form enctype="multipart/form-data" method="POST" action="">
+                    <input type="hidden" name="_method" value="POST">
+                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group">
                           <label for="exampleInputEmail1">ID Surveyor</label>
-                          <input value="{{$surveyor[0]->id_surveyor}}" required readonly type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nama surveyor">
+                          <input name="id" value="{{$surveyor[0]->id_surveyor}}" required readonly type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nama surveyor">
                         </div>
 
 
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nama Surveyor</label>
-                          <input  value="{{$surveyor[0]->nama}}" required type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nama surveyor">
+                          <input name="nama"  value="{{$surveyor[0]->nama}}" required type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nama surveyor">
                         </div>
 
                         <div class="form-group">
                           <label for="exampleInputEmail1">No. Telepon</label>
-                          <input value="{{$surveyor[0]->notelepon}}" required type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan no.telepon surveyor">
+                          <input name="notelepon" value="{{$surveyor[0]->notelepon}}" required type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan no.telepon surveyor">
                         </div>
 
                         <div class="form-group">
                           <label for="exampleInputEmail1">Email</label>
-                          <input value="{{$surveyor[0]->email}}" required type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan email surveyor">
+                          <input name="email" value="{{$surveyor[0]->email}}" required type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan email surveyor">
                         </div>
 
                         <div class="form-group">
                           <label for="exampleInputEmail1">Password</label>
-                          <input value="{{$surveyor[0]->password}}" required type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan password surveyor">
+                          <input value="{{$surveyor[0]->password}}" name="password" required type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan password surveyor">
                         </div>
 
                         <div class="form-group">
                           <label for="exampleInputEmail1">Foto</label>
-                          <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan password surveyor">
+                          <input type="file" name="foto" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan password surveyor">
                         </div>
 
                         <div class="form-group">
@@ -334,7 +337,9 @@
                         </div>
 
                     </div>
-                </div>
+                    </form>
+                   
+                   </div>
               </div>
             </div>
           </div>
