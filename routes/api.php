@@ -17,3 +17,24 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/surveyor/insertsurveyawal', function (Request $request) {
+    
+    return "oke testing";
+});
+
+Route::post('/surveyor/uploadfoto', function (Request $request) {
+    
+    $imageName = time().'.'.$request->file->getClientOriginalExtension();
+    $label = $request->label;
+
+    $lastImageName = $label.$imageName;
+
+    $request->file->move(public_path('/assets/dokumentasi'), $imageName);
+    
+    return [
+        "succes"=>true,
+        "filename"=>$lastImageName
+    ];
+});
+
