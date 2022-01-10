@@ -92,43 +92,43 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {{($selected==='coldfile') ? 'active':''}}" href="{{url('/surveyawal')}}">
+                <a class="nav-link {{($selected==='surveyawal') ? 'active':''}}" href="{{url('/surveyawal')}}">
                     <i class="ni ni-single-copy-04"></i>
                     <span class="nav-link-text">Survey Awal</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {{($selected==='coldfile') ? 'active':''}}" href="{{url('/surveyor')}}">
+                <a class="nav-link {{($selected==='surveylanjutan') ? 'active':''}}" href="{{url('/surveyor')}}">
                     <i class="ni ni-single-copy-04"></i>
                     <span class="nav-link-text">Survey Lanjutan</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {{($selected==='coldfile') ? 'active':''}}" href="coldfile">
+                <a class="nav-link {{($selected==='hitungbisnis') ? 'active':''}}" href="coldfile">
                     <i class="ni ni-single-copy-04"></i>
                     <span class="nav-link-text">Hitung Bisnis</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {{($selected==='coldfile') ? 'active':''}}" href="coldfile">
+                <a class="nav-link {{($selected==='ujituntasstatustanah') ? 'active':''}}" href="coldfile">
                     <i class="ni ni-single-copy-04"></i>
                     <span class="nav-link-text">Uji Tuntas Status Tanah</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {{($selected==='coldfile') ? 'active':''}}" href="coldfile">
+                <a class="nav-link {{($selected==='buatjanjiuntukpenawaran') ? 'active':''}}" href="coldfile">
                     <i class="ni ni-satisfied"></i>
                     <span class="nav-link-text">Buat Janji Untuk Penawaran</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {{($selected==='coldfile') ? 'active':''}}" href="coldfile">
+                <a class="nav-link {{($selected==='transaksiselesai') ? 'active':''}}" href="coldfile">
                     <i class="ni ni-paper-diploma"></i>
                     <span class="nav-link-text">Transaksi Selesai</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {{($selected==='coldfile') ? 'active':''}}" href="coldfile">
+                <a class="nav-link {{($selected==='readyforsale') ? 'active':''}}" href="coldfile">
                     <i class="ni ni-money-coins"></i>
                     <span class="nav-link-text">Ready For Sale</span>
                 </a>

@@ -25,16 +25,14 @@
   <!-- Favicon -->
   <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css">
-  
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="../../assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="../../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Page plugins -->
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="../../assets/css/argon.css?v=1.2.0" type="text/css">
   <style>
       a {
           color:black
@@ -277,13 +275,13 @@
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-              <h6 class="h2 text-white d-inline-block mb-0">Surveyor</h6>
+              <h6 class="h2 text-white d-inline-block mb-0">Update Surveyor</h6>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                  <li class="breadcrumb-item"><a href="dashboard"><i class="fas fa-home"></i></a></li>
-                  <li class="breadcrumb-item"><a href="dashboard">Dashboard</a></li>
-                  <li class="breadcrumb-item"><a href="surveyor">Surveyor</a></li>
-                  
+                  <li class="breadcrumb-item"><a href="{{url('/dashboard')}}"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">Dashboard</a></li>
+                  <li class="breadcrumb-item"><a href="{{url('/surveyor')}}">Surveyor</a></li>
+                  <li class="breadcrumb-item active"><a href="">Update Surveyor</a></li>
                 </ol>
               </nav>
             </div>
@@ -293,77 +291,55 @@
             </div> -->
           </div>
           <!-- Card stats -->
-          <div class="row mb-4" style="padding-left:15px;padding-right:15px">
-             <a href="{{url('/surveyor/create')}}"> <button class="btn btn-secondary">Tambah Surveyor</button></a>
-          </div>
+        
           <div class="row">
-          <div class="flash-message" style="padding-left:15px;padding-right:15px">
-            @foreach (['primary','danger', 'warning', 'success', 'info'] as $msg)
-              @if(Session::has('alert-' . $msg))
-              <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}</p>
-              @endif
-            @endforeach
-          </div>
             <div class="col-xl-12 col-md-12">
               <div class="card card-stats">
                 <!-- Card body -->
-                <div class="card-body">
-                <div class="table-responsive">
-              <table id="table" data-search="true" class="table align-items-center table-flush">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col" class="sort" data-sort="id">ID Surveyor</th>
-                    <th scope="col" class="sort" data-sort="nama">Nama Surveyor</th>
-                    <th scope="col" class="sort" data-sort="notelepon">No Telepon</th>
-                    <th scope="col">Email</th>
-                    <th scope="col" class="sort" data-sort="password">Password</th>
-                    <th scope="col">Foto</th>
-                    <th scope="col">Aksi</th>
-                  </tr>
-                </thead>
-                <tbody class="list">
-                  @foreach($surveyor as $item)
-                  <tr>
-                    <td>
-                      {{$item->id_surveyor}}
-                    </td>
-                    <td>
-                      {{$item->nama}}
-                    </td>
-                    <td>
-                      {{$item->notelepon}}
-                    </td>
-                    <td>
-                      {{$item->email}}
-                    </td>
-                    <td>
-                      {{$item->password}}
-                    </td>
-                    <td>
-                       <div>
-                          <img style="width:100px;height:100px" src="/assets/surveyor/{{$item->foto}}">
-                      </div>
-                    </td>
-                    <td>
-                      <a href="/surveyor/update/{{$item->id_surveyor}}">
-                        <div class="btn btn-primary"> 
-                          <i style="font-size:14px" class="bi bi-pencil"></i>
+                    <div class="card-body">
+
+                    <form enctype="multipart/form-data" method="POST" action="">
+                    <input type="hidden" name="_method" value="POST">
+                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="form-group">
+                          <label for="exampleInputEmail1">ID Surveyor</label>
+                          <input name="id" value="{{$surveyor[0]->id_surveyor}}" required readonly type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nama surveyor">
                         </div>
-                      </a>
-                      <a href="/surveyor/delete/{{$item->id_surveyor}}" title="delete" class="delete" onclick="return confirm('Are you sure you want to delete this item')">
-                          <div class="btn btn-danger"> 
-                            <i style="font-size:14px" class="bi bi-trash"></i>
-                          </div>
-                      </a>
-                    </td>
-                  </tr>
-                  @endforeach
-            
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-                </div>
+
+
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Nama Surveyor</label>
+                          <input name="nama"  value="{{$surveyor[0]->nama}}" required type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nama surveyor">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">No. Telepon</label>
+                          <input name="notelepon" value="{{$surveyor[0]->notelepon}}" required type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan no.telepon surveyor">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Email</label>
+                          <input name="email" value="{{$surveyor[0]->email}}" required type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan email surveyor">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Password</label>
+                          <input value="{{$surveyor[0]->password}}" name="password" required type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan password surveyor">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Foto</label>
+                          <input type="file" name="foto" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan password surveyor">
+                        </div>
+
+                        <div class="form-group">
+                          <button class="btn btn-secondary">Update</button>
+                        </div>
+
+                    </div>
+                    </form>
+                   
+                   </div>
               </div>
             </div>
           </div>
@@ -404,21 +380,16 @@
   </div>
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
-  <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-  <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+  <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/vendor/js-cookie/js.cookie.js"></script>
+  <script src="../../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="../../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Optional JS -->
-  <script src="../assets/vendor/chart.js/dist/Chart.min.js"></script>
-  <script src="../assets/vendor/chart.js/dist/Chart.extension.js"></script>
+  <script src="../../assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="../../assets/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
-  <script src="../assets/js/argon.js?v=1.2.0"></script>
-  <script>
-    $('#table').bootstrapTable({
-})
-  </script>
+  <script src="../../assets/js/argon.js?v=1.2.0"></script>
 </body>
 
 </html>

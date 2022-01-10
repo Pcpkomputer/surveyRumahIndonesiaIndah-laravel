@@ -13,6 +13,42 @@
 =========================================================
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+
+<?php 
+function tanggal_indo($tanggal, $cetak_hari = true)
+{
+	$hari = array ( 1 =>    'Senin',
+				'Selasa',
+				'Rabu',
+				'Kamis',
+				'Jumat',
+				'Sabtu',
+				'Minggu'
+			);
+			
+	$bulan = array (1 =>   'Januari',
+				'Februari',
+				'Maret',
+				'April',
+				'Mei',
+				'Juni',
+				'Juli',
+				'Agustus',
+				'September',
+				'Oktober',
+				'November',
+				'Desember'
+			);
+	$split 	  = explode('-', $tanggal);
+	$tgl_indo = $split[2] . ' ' . $bulan[ (int)$split[1] ] . ' ' . $split[0];
+	
+	if ($cetak_hari) {
+		$num = date('N', strtotime($tanggal));
+		return $hari[$num] . ', ' . $tgl_indo;
+	}
+	return $tgl_indo;
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -48,7 +84,7 @@
 
 <body>
   <!-- Sidenav -->
-  @include("components.sidebar",["selected"=>"surveyor"])
+  @include("components.sidebar",["selected"=>"surveyawal"])
   <!-- Main content -->
   <div class="main-content" id="panel">
     <!-- Topnav -->
@@ -277,12 +313,12 @@
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-              <h6 class="h2 text-white d-inline-block mb-0">Surveyor</h6>
+              <h6 class="h2 text-white d-inline-block mb-0">Survey Awal</h6>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="dashboard"><i class="fas fa-home"></i></a></li>
                   <li class="breadcrumb-item"><a href="dashboard">Dashboard</a></li>
-                  <li class="breadcrumb-item"><a href="surveyor">Surveyor</a></li>
+                  <li class="breadcrumb-item"><a href="surveyawal">Survey Awal</a></li>
                   
                 </ol>
               </nav>
@@ -293,9 +329,9 @@
             </div> -->
           </div>
           <!-- Card stats -->
-          <div class="row mb-4" style="padding-left:15px;padding-right:15px">
+          <!-- <div class="row mb-4" style="padding-left:15px;padding-right:15px">
              <a href="{{url('/surveyor/create')}}"> <button class="btn btn-secondary">Tambah Surveyor</button></a>
-          </div>
+          </div> -->
           <div class="row">
           <div class="flash-message" style="padding-left:15px;padding-right:15px">
             @foreach (['primary','danger', 'warning', 'success', 'info'] as $msg)
@@ -312,45 +348,33 @@
               <table id="table" data-search="true" class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col" class="sort" data-sort="id">ID Surveyor</th>
-                    <th scope="col" class="sort" data-sort="nama">Nama Surveyor</th>
-                    <th scope="col" class="sort" data-sort="notelepon">No Telepon</th>
-                    <th scope="col">Email</th>
-                    <th scope="col" class="sort" data-sort="password">Password</th>
-                    <th scope="col">Foto</th>
+                    <th scope="col" class="sort" data-sort="id">ID Survey</th>
+                    <th scope="col" class="sort" data-sort="notelepon">Nama Surveyor</th>
+                    <!-- <th scope="col" class="sort" data-sort="notelepon">Alamat Survey</th> -->
+                    <th scope="col" class="sort" data-sort="password">Tanggal Survey</th>
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
                 <tbody class="list">
-                  @foreach($surveyor as $item)
+
+                  @foreach($surveyawal as $surveyawal)
                   <tr>
+                    <td>{{$surveyawal->id_survey}}</td>
+                    <td>{{$surveyawal->nama}}</td>
+                    <td>{{tanggal_indo(explode(" ",$surveyawal->tanggal_survey)[0])}}</td>
+                    <!-- <td>1</td> -->
                     <td>
-                      {{$item->id_surveyor}}
-                    </td>
-                    <td>
-                      {{$item->nama}}
-                    </td>
-                    <td>
-                      {{$item->notelepon}}
-                    </td>
-                    <td>
-                      {{$item->email}}
-                    </td>
-                    <td>
-                      {{$item->password}}
-                    </td>
-                    <td>
-                       <div>
-                          <img style="width:100px;height:100px" src="/assets/surveyor/{{$item->foto}}">
-                      </div>
-                    </td>
-                    <td>
-                      <a href="/surveyor/update/{{$item->id_surveyor}}">
+                    <a href="/surveyor/update/">
+                        <div class="btn btn-success"> 
+                          <i style="font-size:14px" class="bi bi-eye"></i>
+                        </div>
+                      </a>
+                      <a href="/surveyor/update/">
                         <div class="btn btn-primary"> 
                           <i style="font-size:14px" class="bi bi-pencil"></i>
                         </div>
                       </a>
-                      <a href="/surveyor/delete/{{$item->id_surveyor}}" title="delete" class="delete" onclick="return confirm('Are you sure you want to delete this item')">
+                      <a href="/surveyor/delete/" title="delete" class="delete" onclick="return confirm('Are you sure you want to delete this item')">
                           <div class="btn btn-danger"> 
                             <i style="font-size:14px" class="bi bi-trash"></i>
                           </div>
@@ -358,8 +382,9 @@
                     </td>
                   </tr>
                   @endforeach
+
             
-                  </tr>
+       
                 </tbody>
               </table>
             </div>

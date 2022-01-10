@@ -39,7 +39,7 @@ class SurveyorController extends Controller
 
         $delete = DB::delete("DELETE FROM surveyor WHERE id_surveyor=?",[$id]);
 
-        return redirect("/surveyor")->with("alert-danger","Berhasil menghapus data surveyor.");
+        return redirect("/surveyor")->with("alert-primary","Berhasil menghapus data surveyor.");
     }
 
 
@@ -52,13 +52,13 @@ class SurveyorController extends Controller
 
             $insert = DB::insert("INSERT INTO surveyor VALUES (NULL,?,?,?,?,?)",[$request->nama,$request->notelepon,$request->email,$request->password,$imageName]);
 
-            return redirect("/surveyor")->with("alert-danger","Berhasil menambah data surveyor.");
+            return redirect("/surveyor")->with("alert-primary","Berhasil menambah data surveyor.");
         }
         else{
 
             $insert = DB::insert("INSERT INTO surveyor VALUES (NULL,?,?,?,?,NULL)",[$request->nama,$request->notelepon,$request->email,$request->password]);
 
-            return redirect("/surveyor")->with("alert-danger","Berhasil menambah data surveyor.");
+            return redirect("/surveyor")->with("alert-primary","Berhasil menambah data surveyor.");
         }
 
  
@@ -82,14 +82,14 @@ class SurveyorController extends Controller
 
             $insert = DB::insert("UPDATE surveyor SET nama=?,notelepon=?,email=?,password=?,foto=? WHERE id_surveyor=?",[$request->nama,$request->notelepon,$request->email,$request->password,$imageName,$id]);
 
-            return redirect("/surveyor")->with("alert-danger","Berhasil mengubah data surveyor.");
+            return redirect("/surveyor")->with("alert-primary","Berhasil mengubah data surveyor.");
 
         }
         else{
 
             $insert = DB::insert("UPDATE surveyor SET nama=?,notelepon=?,email=?,password=? WHERE id_surveyor=?",[$request->nama,$request->notelepon,$request->email,$request->password,$id]);
 
-            return redirect("/surveyor")->with("alert-danger","Berhasil mengubah data surveyor.");
+            return redirect("/surveyor")->with("alert-primary","Berhasil mengubah data surveyor.");
 
         }
     }
