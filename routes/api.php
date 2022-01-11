@@ -30,7 +30,7 @@ Route::post('/surveyor/uploadfoto', function (Request $request) {
 
     $lastImageName = $label.$imageName;
 
-    $request->file->move(public_path('/assets/dokumentasi'), $imageName);
+    $request->file->move(public_path('/assets/dokumentasi'), $lastImageName);
     
     return [
         "succes"=>true,
