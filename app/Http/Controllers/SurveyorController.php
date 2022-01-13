@@ -37,6 +37,15 @@ class SurveyorController extends Controller
 
     public function delete(Request $request, $id){
 
+        $file = DB::select("SELECT * FROM surveyor WHERE id_surveyor=?",[$id]);
+
+        if(empty($file[0]->foto)==false){
+               if(File::exists(public_path('assets/surveyor/'.$file[0]->foto))){
+                    File::delete(public_path('assets/surveyor/'.$file[0]->foto));
+                }
+        }
+        
+
         $delete = DB::delete("DELETE FROM surveyor WHERE id_surveyor=?",[$id]);
 
         return redirect("/surveyor")->with("alert-primary","Berhasil menghapus data surveyor.");

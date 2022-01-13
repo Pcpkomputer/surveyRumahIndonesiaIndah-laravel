@@ -19,7 +19,7 @@ class SurveyAwalController extends Controller
     public function show(Request $request)
     {
         $surveyawal = DB::select("SELECT surveyawal.*,surveyor.nama FROM surveyawal 
-        INNER JOIN surveyor ON surveyor.id_surveyor=surveyawal.id_surveyor");
+        INNER JOIN surveyor ON surveyor.id_surveyor=surveyawal.id_surveyor ORDER BY surveyawal.tanggal_survey DESC");
 
         return view("SurveyAwal.surveyawal",["surveyawal"=>$surveyawal]);
     }
