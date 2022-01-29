@@ -29,12 +29,22 @@ class SurveyAwalController extends Controller
     //     return view("Surveyor.surveyor-create");
     // }
 
-    // public function update(Request $request, $id){
+    public function update(Request $request, $id){
 
-    //     $surveyor = DB::select("SELECT * FROM surveyor WHERE id_surveyor=?",[$id]);
+        //$surveyor = DB::select("SELECT * FROM surveyor WHERE id_surveyor=?",[$id]);
 
-    //     return view("Surveyor.surveyor-update",["surveyor"=>$surveyor]);
-    // }
+        return view("SurveyAwal.surveyawal-update");
+    }
+
+
+    public function detail(Request $request, $id){
+
+        $survey = DB::select("SELECT surveyawal.*,surveyor.nama FROM surveyawal INNER JOIN surveyor ON surveyor.id_surveyor=surveyawal.id_surveyor WHERE surveyawal.id_survey=?",[$id]);
+
+        $parsed = json_decode($survey[0]->json);
+
+        return view("SurveyAwal.surveyawal-view",["survey"=>$survey[0],"data"=>$parsed]);
+    }
 
     // public function delete(Request $request, $id){
 

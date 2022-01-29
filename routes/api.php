@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post("/surveyor/riwayatsurvey/{id}", function (Request $request,$id){
 
-    $riwayat = DB::select("SELECT surveyawal.*,surveyor.nama FROM surveyawal INNER JOIN surveyor 
+    $riwayat = DB::select("SELECT surveyawal.*,surveyor.nama,surveyor.foto FROM surveyawal INNER JOIN surveyor 
     ON surveyor.id_surveyor=surveyawal.id_surveyor WHERE surveyawal.id_surveyor=? AND status IS NULL ORDER BY surveyawal.id_surveyawal DESC",[$id]);
 
     return $riwayat;
@@ -39,7 +39,7 @@ Route::post('/surveyor/insertsurveyawal', function (Request $request) {
     $id = "SRV-".$day.$month.$year."-".uniqid();
 
 
-    $insert = DB::insert("INSERT INTO surveyawal VALUES (NULL,?,?,NOW(),?)",[$id,2,$payload]);
+    $insert = DB::insert("INSERT INTO surveyawal VALUES (NULL,?,?,NOW(),?,NULL)",[$id,2,$payload]);
     
     return [
         "success"=>true,

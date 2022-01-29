@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>SRI Admin Dashboard - Update Survey Awal</title>
+  <title>SRI Admin Dashboard - Detail Survey Awal</title>
   <!-- Favicon -->
   <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
@@ -33,6 +33,16 @@
   <!-- Page plugins -->
   <!-- Argon CSS -->
   <link rel="stylesheet" href="../../assets/css/argon.css?v=1.2.0" type="text/css">
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+
+
   <style>
       a {
           color:black
@@ -41,6 +51,8 @@
       a:hover {
           color:black
       }
+
+  
   </style>
 </head>
 
@@ -275,13 +287,13 @@
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-              <h6 class="h2 text-white d-inline-block mb-0">Update Survey Awal</h6>
+              <h6 class="h2 text-white d-inline-block mb-0">Detail Survey Awal</h6>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="{{url('/dashboard')}}"><i class="fas fa-home"></i></a></li>
                   <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">Dashboard</a></li>
                   <li class="breadcrumb-item"><a href="{{url('/surveyawal')}}">Survey Awal</a></li>
-                  <li class="breadcrumb-item active"><a href="">Update Surveyawal</a></li>
+                  <li class="breadcrumb-item active"><a href="">Detail Surveyawal</a></li>
                 </ol>
               </nav>
             </div>
@@ -301,7 +313,87 @@
                     <form enctype="multipart/form-data" method="POST" action="">
                     <input type="hidden" name="_method" value="POST">
                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
-               
+
+                     <div class="accordion-1">
+                            <div class="row">
+                              <div class="col-md-12 ml-auto">
+                                <div class="accordion my-3" id="accordionExample">
+                                  <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                      <h5 class="mb-0">
+                                        <button style="color:#38d49e" class="btn btn-link w-100 text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                          Surveyor
+                                        
+
+                                        </button>
+                                      </h5>
+                                    </div>
+
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                      <div class="card-body opacity-8">
+                                            <div class="row">
+                                                    <div style="display:flex;align-items:center;padding-left:20px" class="col-lg-2">
+                                                          <label style="text-align:center;margin-bottom:0px">ID Survey</label>
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                            <input type="idsurvey" value="{{$survey->id_survey}}" class="form-control form-control-alternative" id="exampleFormControlInput1" placeholder="ID Survey">
+                                                    </div>
+                                              </div>
+                                              <div class="row mt-3">
+                                                    <div style="display:flex;align-items:center;padding-left:20px" class="col-lg-2">
+                                                          <label style="text-align:center;margin-bottom:0px">Tanggal Survey</label>
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                            <input type="idsurvey" value="{{$survey->tanggal_survey}}" class="form-control form-control-alternative" id="exampleFormControlInput1" placeholder="Tanggal Survey">
+                                                    </div>
+                                              </div>
+                                              <div class="row mt-3">
+                                                    <div style="display:flex;align-items:center;padding-left:20px" class="col-lg-2">
+                                                          <label style="text-align:center;margin-bottom:0px">Nama Surveyor</label>
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                            <input type="idsurvey" value="{{$survey->nama}}" class="form-control form-control-alternative" id="exampleFormControlInput1" placeholder="Tanggal Survey">
+                                                    </div>
+                                              </div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="accordion my-3" id="accordionExample">
+                                      <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                          <h5 class="mb-0">
+                                            <button style="color:#38d49e" class="btn btn-link w-100 text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                              Objek
+                                            
+
+                                            </button>
+                                          </h5>
+                                        </div>
+
+                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                          <div class="card-body opacity-8">
+                                              <div class="row">
+                                                  <div style="display:flex;align-items:center;padding-left:20px" class="col-lg-2">
+                                                  <label style="text-align:center">Jenis Objek</label>
+                                                  </div>
+                                                  <div class="col-md-10">
+                                                        <div class="form-group">
+                                                          <input value="{{$data->objek}}" type="email" class="form-control form-control-alternative" id="exampleFormControlInput1" placeholder="Jenis Objek">
+                                                        </div>
+                                                      </div>
+                                                  </div>
+                                            </div>
+                                          </div>
+                                      </div>
+                                  </div>
+
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
                     </div>
                     </form>

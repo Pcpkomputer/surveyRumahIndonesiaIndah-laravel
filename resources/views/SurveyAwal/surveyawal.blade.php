@@ -57,7 +57,7 @@ function tanggal_indo($tanggal, $cetak_hari = true)
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>SRI Admin Dashboard - Surveyor</title>
+  <title>SRI Admin Dashboard - Survey Awal</title>
   <!-- Favicon -->
   <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
@@ -364,17 +364,17 @@ function tanggal_indo($tanggal, $cetak_hari = true)
                     <td>{{tanggal_indo(explode(" ",$surveyawal->tanggal_survey)[0])}}</td>
                     <!-- <td>1</td> -->
                     <td>
-                    <a href="/surveyor/update/">
+                    <a href="/surveyawal/view/{{$surveyawal->id_survey}}">
                         <div class="btn btn-success"> 
                           <i style="font-size:14px" class="bi bi-eye"></i>
                         </div>
                       </a>
-                      <a href="/surveyor/update/">
+                      <a href="/surveyawal/update/{{$surveyawal->id_survey}}">
                         <div class="btn btn-primary"> 
                           <i style="font-size:14px" class="bi bi-pencil"></i>
                         </div>
                       </a>
-                      <a href="/surveyor/delete/" title="delete" class="delete" onclick="return confirm('Are you sure you want to delete this item')">
+                      <a href="/surveyor/delete/{{$surveyawal->id_survey}}" title="delete" class="delete" onclick="return confirm('Are you sure you want to delete this item')">
                           <div class="btn btn-danger"> 
                             <i style="font-size:14px" class="bi bi-trash"></i>
                           </div>
